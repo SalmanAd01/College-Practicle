@@ -1,13 +1,16 @@
 package main
 
 import (
-	"College-Practicle/helper"
 	"fmt"
+	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func main() {
-	for i := 0; i < 5; i++ {
-		fmt.Println("Hello World")
-	}
-	helper.Hello()
+	router := mux.NewRouter()
+	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "Hello")
+	}).Methods("GET")
+	http.ListenAndServe(":8080", router)
 }
