@@ -18,8 +18,5 @@ func main() {
 	router.HandleFunc("/re1", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "re1")
 	}).Methods("GET")
-	router.HandleFunc("/re1/2", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "re1")
-	}).Methods("GET")
 	http.ListenAndServe(":8080", router)
 }
